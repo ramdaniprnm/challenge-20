@@ -1,0 +1,36 @@
+{
+  "name": "challenge-20",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "description": "Challenge-20",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramdaniprnm/Challange-20.git"
+  },
+  "keywords": [
+    "BREAD"
+  ],
+  "author": "Ramdani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ramdaniprnm/Challange-20/issues"
+  },
+  "homepage": "https://github.com/ramdaniprnm/Challange-20#readme"
+}
