@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQlite BREAD (Browse, Read, Edit, Add, Delete) and Pagination</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1><%= title %></h1>
+    <form>
+        <div class="form-group">
+            <label for="inputName">Name</label>
+            <input type="text" id="inputName" required>
+        </div>
+        <div class="form-group">
+            <label for="inputHeight">Height</label>
+            <input type="number"  id="inputHeight" required>
+        </div>
+        <div class="form-group">
+            <label for="inputWeight">Weight</label>
+            <input type="number" step="0.01" min="0"  id="inputWeight" required>
+        </div>
+        <div class="form-group">
+            <label for="inputBirthDate">Birth Date</label>
+            <input type="date"  id="inputBirthDate" required>
+        </div>
+        <div class="form-group">
+            <label for="inputIsMarried">Is Married</label>
+            <select name="married" required>
+                <option value="" disabled selected>-select married-</option>
+                <option value="true">yes</option>
+                <option value="false">Not Yet</option>
+        </select><br/> 
+        </div>
+        <div class="form-group">
+            <legend>Operation</legend>
+            <div class="form-check">
+                <input type="radio" id="gridRadios1" name="gridRadios" value="option1" checked>
+                <label for="gridRadios1">OR</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" id="gridRadios2" name="gridRadios" value="option2">
+                <label for="gridRadios2">AND</label>
+            </div>
+        </> 
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

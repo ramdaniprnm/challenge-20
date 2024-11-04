@@ -4,5 +4,159 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #515c60;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.form-check {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+
+
+h1 {
+  color: #333;
+}
+
+a[href="/add"] {
+  display: block;
+  text-align: center;
+  margin: 10px auto;
+  padding: 10px 20px;
+  color: white;
+  background-color: #515a69; 
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a[href="/add"]:hover {
+  text-decoration: none;
+  opacity: 1;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 100%;
+  border: 2px solid #c1bdbd;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+  /* border-bottom: 1px solid #ddd; */
+}
+
+th {
+  color: #000;
+}
+
+tr:nth-child(even) {
+  background-color: #e4e0e0;
+}
+
+a {
+  color: #e8edf2;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+td:last-child {
+  text-align: center;
+}
+
+.table, tr, th, td {
+  margin-top: 10px;
+  border-collapse: collapse;  
+  /* border: 1px solid #ccc; */
+}
+
+form {
+  max-width: auto;
+  margin:  auto;
+  padding: 100;
+  border-radius: 8px;
+  background-color: #f0f8ff; 
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #333;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="date"],
+form select {
+  width: 100%;
+  padding: 15px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* submit dan cancel */
+.submit-button, .cancel-button {
+  width: 100%;
+  padding: 15px;
+  font-size: 12.5px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Submit */
+.submit-button {
+  background-color: #04a96d; 
+  text-align: center;
+}
+
+.submit-button:hover {
+  background-color: #04a96d; 
+}
+
+/* Cancel */
+.cancel-button {
+  background-color: #0000ff;
+  text-align: center;
+  margin-top: 10px; 
+}
+
+.cancel-button:hover {
+  background-color: #000080; 
 }

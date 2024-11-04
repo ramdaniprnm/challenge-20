@@ -1,10 +1,25 @@
-import express from 'express';
-
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
+var path = require('path');
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Express' });
+router.get('/', function (req, res, next) {
+  res.render('list', { title: 'SQlite BREAD (Browse, Read, Edit, Add, Delete) and Pagination' });
 });
 
-export default router;
+router.get('/add', function (req, res, next) {
+  res.render('add', { title: 'Adding Data' });
+});
+
+router.get('/edit/:id', function (req, res, next) {
+  console.log(`req.params.id: ${req.params.id}`);
+
+  res.render('edit', { title: 'Updating Data' });
+});
+
+router.get('/delete/:id', function (req, res, next) {
+  const id = req.params.id;
+  res.render('edit', { title: 'Updating Data' });
+});
+
+module.exports = router;
