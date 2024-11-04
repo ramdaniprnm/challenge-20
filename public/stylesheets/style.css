@@ -1,18 +1,25 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
 }
 
-a {
-  color: #515c60;
+form {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
 }
-
 .form-group {
     margin-bottom: 15px;
 }
 
 .form-group label {
     display: block;
+    font-weight: bold;
+    color: #333;
     margin-bottom: 5px;
 }
 
@@ -20,143 +27,128 @@ a {
 .form-group select {
     width: 100%;
     padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
     box-sizing: border-box;
 }
 
 .form-check {
     margin-bottom: 10px;
+    display: inline-block;
+    margin-right: 15px;
 }
 
-button {
+button, .submit-button, .cancel-button {
     padding: 10px 15px;
-    background-color: #007BFF;
+    font-size: 14px;
+    font-weight: bold;
     color: white;
     border: none;
     cursor: pointer;
-}
-button:hover {
-    background-color: #0056b3;
+    border-radius: 4px;
 }
 
+.submit-button {
+  background-color: #06c8ef;
+}
+
+.submit-button:hover {
+  background-color: #028c5a;
+}
+
+.reset-button {
+  background-color: #ffc007;
+  margin-top: 10px;
+}
+
+.reset-button:hover {
+  background-color: #1768c5;
+}
 
 h1 {
   color: #333;
+  text-align: center;
+  margin-top: 20px;
 }
 
 a[href="/add"] {
   display: block;
-  text-align: center;
+  width: fit-content;
   margin: 10px auto;
+  text-align: center;
   padding: 10px 20px;
   color: white;
-  background-color: #515a69; 
+  background-color: #007BFF; 
   border-radius: 4px;
   text-decoration: none;
   font-weight: bold;
 }
+.add-button {
+   background-color: #2e70bc
+}
 
 a[href="/add"]:hover {
-  text-decoration: none;
+  background-color: #0056b3;
   opacity: 1;
 }
 
 table {
-  margin: 0 auto;
-  border-collapse: collapse;
   width: 100%;
-  border: 2px solid #c1bdbd;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 th, td {
   padding: 12px 15px;
   text-align: center;
-  /* border-bottom: 1px solid #ddd; */
+  border-bottom: 1px solid #ddd;
 }
 
 th {
   color: #000;
+  font-weight: bold;
 }
 
 tr:nth-child(even) {
-  background-color: #e4e0e0;
+  background-color: #f4f4f4;
 }
 
-a {
-  color: #e8edf2;
-  text-decoration: none;
-  margin-right: 10px;
+th:last-child {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
-td:last-child {
-  text-align: center;
-}
-
-.table, tr, th, td {
-  margin-top: 10px;
-  border-collapse: collapse;  
-  /* border: 1px solid #ccc; */
-}
-
-form {
-  max-width: auto;
-  margin:  auto;
-  padding: 100;
-  border-radius: 8px;
-  background-color: #f0f8ff; 
-}
-
-form label {
-  display: block;
-  font-weight: bold;
-  margin-top: 10px;
-  color: #333;
-}
-
-form input[type="text"],
-form input[type="number"],
-form input[type="date"],
-form select {
-  width: 100%;
-  padding: 15px;
-  margin-top: 5px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-/* submit dan cancel */
-.submit-button, .cancel-button {
-  width: 100%;
-  padding: 15px;
-  font-size: 12.5px;
-  font-weight: bold;
+.update-button {
+  padding: 8px 12px;
+  background-color: #198753;
   color: white;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-/* Submit */
-.submit-button {
-  background-color: #04a96d; 
-  text-align: center;
+.update-button:hover {
+  background-color: #df4250;
 }
 
-.submit-button:hover {
-  background-color: #04a96d; 
+.delete-button:hover {
+  background-color: #c82333;
 }
 
-/* Cancel */
-.cancel-button {
-  background-color: #0000ff;
-  text-align: center;
-  margin-top: 10px; 
+.pagination button {
+  padding: 8px 12px;
+  margin: 0 5px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.cancel-button:hover {
-  background-color: #000080; 
+.pagination button:hover {
+  background-color: #0056b3;
 }
+

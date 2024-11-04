@@ -7,32 +7,116 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-    <h1><%= title %></h1>
-    <form>
+    <h1>SQlite BREAD (Browse, Read, Edit, Add, Delete) and Pagination</h1>1`    
+        <form action="/search" method ="get" class="search-form"></form>
         <div class="form-group">
-            <label for="inputName">Name</label>
-            <input type="text" id="inputName" required>
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Search Name">
         </div>
         <div class="form-group">
-            <label for="inputHeight">Height</label>
-            <input type="number"  id="inputHeight" required>
+            <label>Height</label>
+            <input type="number" name="height" placeholder="Search Height">
         </div>
         <div class="form-group">
-            <label for="inputWeight">Weight</label>
-            <input type="number" step="0.01" min="0"  id="inputWeight" required>
+            <label>Weight</label>
+            <input type="number" step="0.01" min="0"  id="Weight" placeholder="insert Your Weight">
         </div>
         <div class="form-group">
-            <label for="inputBirthDate">Birth Date</label>
-            <input type="date"  id="inputBirthDate" required>
+            <label>Birth Date</label>
+            <input type="date" name="birthDateStart">
+            <span>s.d.</span>
+        <input type="date" name="birthDateEnd">
         </div>
         <div class="form-group">
             <label for="inputIsMarried">Is Married</label>
             <select name="married" required>
                 <option value="" disabled selected>-select married-</option>
                 <option value="true">yes</option>
-                <option value="false">Not Yet</option>
-        </select><br/> 
+                <option value="false">Not Yet</option> 
+            </select><br/> 
         </div>
+        <div class="form-group">
+        <label>Operation</label>
+        <div class="form-check">
+            <input type="radio" name="operation" value="OR" checked> OR
+            <input type="radio" name="operation" value="AND"> AND
+        </div>
+         </div>
+        <button type="submit" class="add-button">Add</button>
+    </form>
+        <div class="form-group">
+            <button type="submit" class="search-button">Search</button>
+            <button type="button" class="reset-button" onclick="window.location.href='/reset>';">Reset</button>
+        </div>
+         <button type="submit" class="update-button">Update</button>
+    <button type="reset" class="delete-button">Delete</button>
+  </form>
+  <table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>Birth Date</th>
+            <th>Is Married</th>
+            <th>Operation</th>
+        </tr>
+    </thead>
+  </table>
+        <tbody>
+            <% data.forEach((person, index) => { %>
+                <tr>
+                <td><%= person.Name %></td>
+                <td><%= person.Height %></td>
+                <td><%= person.Weight %></td>
+                <td><%= person.BirthDate %></td>
+                <td><%= person.operation %></td>
+                <td><%= person.IsMarried %></td>
+                <a href="/update/=<%= person.id %>" class="update-button">Update</a>
+                <a href="/delete/=<%= person.id %>" class="delete-button">Delete</a>
+                <% }) %>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+    <!-- <h1><%= title %></h1>
+    <form>
+        <div class="form-group">
+            <label for="Name">Name</label>
+            <input type="text" id="Name" placeholder="insert Your Name" required>
+        </div>
+        <div class="form-group">
+            <label for="Height">Height</label>
+            <input type="number"  id="Height" placeholder="insert Your Height" required>
+        </div>
+        <div class="form-group">
+            <label for="Weight">Weight</label>
+            <input type="number" step="0.01" min="0"  id="inputWeight" placeholder="insert Your Weight" required>
+        </div>
+        <div class="form-group">
+            <label for="BirthDate">Birth Date</label>
+            <input type="date"  id="BirthDate" required>
+        </div>  
+        <div class="form-group">
+            <button type="submit" class="submit-button">Update</button>
+            <button type="button" class="reset-button" onclick="window.location.href='/reset>';">Reset</button>
+        </div>
+        <div class="form-group">
+            <label for="inputIsMarried">Is Married</label>
+            <select name="married" required>
+                <option value="" disabled selected>-select married-</option>
+                <option value="true">yes</option>
+                <option value="false">Not Yet</option> 
+        </select><br/> 
+        <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+  </ul>
+</nav>
         <div class="form-group">
             <legend>Operation</legend>
             <div class="form-check">
@@ -43,8 +127,8 @@
                 <input type="radio" id="gridRadios2" name="gridRadios" value="option2">
                 <label for="gridRadios2">AND</label>
             </div>
-        </> 
+        </div>
         <button type="submit">Add</button>
     </form>
 </body>
-</html>
+</html> -->

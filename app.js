@@ -1,21 +1,21 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var sqlite3 = require('sqlite3').verbose();
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const sqlite3 = require('sqlite3').verbose();
 
-try {
-  var db = new sqlite3.Database(':memory:');
-  console.log('Connect ke user db.');
-} catch (error) {
-  console.error('Gagal connect ke user db:', error);
-}
+const db = new sqlite3.Database('/user.db', (err) => {
+  if (err) {
+    console.error('Gagal connect ke user db:', err);
+  } else {
+    console.log('Connect ke user db.');
+  }
+});
+const indexRouter = require('./routes/index');
+// const usersRouter = require('./routes/users');
 
-var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
-
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,16 +28,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-// app.use('/users', usersRouter);
 
-// catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
 app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
@@ -46,7 +43,9 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-var port = 3000;
+const port = 3000;
 app.listen(port, function () {
-  console.log('menyambung ke port' + port + '!');
+  console.log(`menyambung ke port ${port}`);
 });
+
+module.exports = { app, db };
