@@ -1,6 +1,4 @@
-<div text-align="center"
-  "This Is For Repository RUBICAMP CHALLANGES 20" >
-</div>
+## This Is For Repository RUBICAMP CHALLANGES 20 
 
 <div align="center" style="display: flex; justify-content: center; gap: 20px;">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript Logo" width="75"/>
