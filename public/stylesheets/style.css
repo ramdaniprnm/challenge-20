@@ -1,69 +1,234 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #f7f7f7;
-  color: #333;
+  margin: 0;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
-form {
-  max-width: 900px;
+.container {
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #ffffff;
+  padding: 0px;
+  border-color: #000;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+
+.card-body {
+  margin-top: 1%;
+  padding: 0 1rem;
+  background-color: #f7f7f7;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card-header {
+    width: 98%;
+    background-color: #e9e9e9;
+    display: flex;
+    padding: 1%;
+    justify-content: center;
+    border-radius: 5px 5px 0 0;
+}
+
+.form-group input[type="date"] {
+  flex: 1;
+  padding: 10px; 
+  margin-right: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+ }
+
 .form-group {
-    margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 .form-group label {
-    display: block;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 5px;
+  font-weight: bold;
+  margin-right: 10px;
+  white-space: nowrap;
+  width: 200px;
+}
+
+.form-group span {
+  margin: 0 10px;
+  white-space: nowrap;
+}
+
+.form input,
+.form select {
+  flex: 1;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.page-button {
+  background-color: #198753;
+  padding: 8px 15px;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.update-button {
+  background-color: #198754;
+  padding: 8px 15px;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  padding: 8px 15px;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-button {
+  background-color: #10caf0;
+}
+
+.delete-button {
+  background-color: #dc3444;
+}
+
+.reset-button {
+  background-color: #ffc107;
+}
+
+a[href="/add"] {
+  display: inline-block;
+  width: fit-content;
+  margin: 10px auto;
+  text-align: center;
+  padding: 8px 30px;
+  color: white;
+  background-color: #007BFF; 
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.pagination-button {
+  background-color: #198753;
+  padding: 8px 15px;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.table-action {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.table-container {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #e2dfdf;
+} 
+
+.form-action {
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 }
 
 .form-group input,
 .form-group select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 .form-check {
-    margin-bottom: 10px;
-    display: inline-block;
-    margin-right: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  margin-top: 10px;
+  margin-left: -40px;
 }
 
-button, .submit-button, .cancel-button {
-    padding: 10px 15px;
-    font-size: 14px;
-    font-weight: bold;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
+table, thead {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  color: #000;
+  font-weight: bold;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 5px;
 }
 
 .submit-button {
-  background-color: #06c8ef;
-}
-
-.submit-button:hover {
   background-color: #028c5a;
-}
-
-.reset-button {
-  background-color: #ffc007;
-  margin-top: 10px;
-}
-
-.reset-button:hover {
-  background-color: #1768c5;
 }
 
 h1 {
@@ -72,83 +237,16 @@ h1 {
   margin-top: 20px;
 }
 
-a[href="/add"] {
-  display: block;
-  width: fit-content;
-  margin: 10px auto;
-  text-align: center;
-  padding: 10px 20px;
-  color: white;
-  background-color: #007BFF; 
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: bold;
-}
-.add-button {
-   background-color: #2e70bc
-}
-
-a[href="/add"]:hover {
-  background-color: #0056b3;
-  opacity: 1;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-th, td {
-  padding: 12px 15px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-}
-
-th {
-  color: #000;
-  font-weight: bold;
-}
-
 tr:nth-child(even) {
   background-color: #f4f4f4;
 }
 
-th:last-child {
+
+
+.pagination {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
   gap: 10px;
+  color: #e61a1a;
 }
-
-.update-button {
-  padding: 8px 12px;
-  background-color: #198753;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.update-button:hover {
-  background-color: #df4250;
-}
-
-.delete-button:hover {
-  background-color: #c82333;
-}
-
-.pagination button {
-  padding: 8px 12px;
-  margin: 0 5px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.pagination button:hover {
-  background-color: #0056b3;
-}
-

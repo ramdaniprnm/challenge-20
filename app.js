@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sqlite3 = require('sqlite3').verbose();
 
-const db = new sqlite3.Database('/user.db', (err) => {
+const db = new sqlite3.Database('./user.db', (err) => {
   if (err) {
     console.error('Gagal connect ke user db:', err);
   } else {
