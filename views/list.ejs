@@ -15,7 +15,7 @@
                 <h1>SQlite BREAD (Browse, Read, Edit, Add, Delete) and Pagination</h1>
             </div>
             <div class="card-body">
-                <form action="/search" method="get" class="search-form">
+                <form action="/" method="get" class="search-form">
                     <div class="form-group">
                         <label>Name</label>
                         <input type="text" name="name" id="name" placeholder="Search Name">
@@ -52,22 +52,20 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="search-button">Search</button>
-                        <button type="button" class="reset-button"
-                            onclick="window.location.href='/reset';">Reset</button>
+                        <button type="button" class="reset-button" onclick="window.location.href='/';">Reset</button>
                     </div>
                 </form>
             </div>
         </div>
-
-        <div>
+        <div class="table-container">
             <table>
                 <thead>
                     <tr>
                         <th>NO.</th>
-                        <th>name</th>
-                        <th>height</th>
-                        <th>weight</th>
-                        <th>birth Date</th>
+                        <th>Name</th>
+                        <th>Height</th>
+                        <th>Weight</th>
+                        <th>Birth Date</th>
                         <th>Is Married</th>
                         <th>Actions</th>
                     </tr>
@@ -76,7 +74,7 @@
                     <% data.forEach((person, index)=> { %>
                         <tr>
                             <th>
-                                <%= index + 1 %>
+                                <%= index + offset + 1 %>
                             </th>
                             <td>
                                 <%= person.name %>
@@ -94,42 +92,40 @@
                                 <%= person.married ? "Yes" : "Not Yet" %>
                             </td>
                             <td>
-                                <a href="/update/<%= person.id %>" class="update-button">Update</a>
-                                <a href="/delete/<%= person.id %>" class="delete-button">Delete</a>
+                                <a href="/edit/<%= person.id %>" style="text-decoration:none"
+                                    class="update-button">Update</a>
+                                <a href="javascript:void(0);" style="text-decoration:none" class="delete-button"
+                                    onclick="if(confirm('Apakah kamu yakin ingin menghapus data ini?')) { window.location.href='/delete/<%= person.id %>'; }">Delete</a>
                             </td>
                         </tr>
                         <% }) %>
                 </tbody>
             </table>
         </div>
-        <div class="card-footer">
-            <a href="/add">Add</a>
+        <div class="pagination">
+            <div class="container">
+                <a href="/add">Add</a>
+            </div>
 
-            <!-- Tombol Previous (Sebelumnya) -->
             <% if (page> 1) { %>
-                <a href="/?page=<%= page - 1 %>&search=<%= searchQuery %>" class="page-button">⟪</a>
-                <% } else { %>
-                    <span class="page-button disabled">⟪</span>
-                    <% } %>
+                <button class="page-button" style="text-decoration:none"
+                    onclick="window.location.href='/?page=<%= page - 1%>'">⟪</button>
+                <% } %>
 
-                        <!-- Halaman yang aktif dan tombol halaman lainnya -->
-                        <% for (let i=1; i <=totalPages; i++) { %>
-                            <a href="/?page=<%= i %>&search=<%= searchQuery %>"
-                                class="page-button <%= page === i ? 'active' : '' %>">
+                    <% for (let i=1; i <=totalPages; i++) { %>
+                        <button class="page-button <%=page===i ? 'active' : '' %>">
+                            <a href="/?page=<%= i %>" style="text-decoration:none; color: white;">
                                 <%= i %>
                             </a>
-                            <% } %>
+                        </button>
+                        <% } %>
 
-                                <!-- Tombol Next (Berikutnya) -->
-                                <% if (page < totalPages) { %>
-                                    <a href="/?page=<%= page + 1 %>&search=<%= searchQuery %>" class="page-button">⟫</a>
-                                    <% } else { %>
-                                        <span class="page-button disabled">⟫</span>
-                                        <% } %>
+                            <% if (page < totalPages) { %>
+                                <button class="page-button" style="text-decoration:none"
+                                    onclick="window.location.href='/?page=<%= page + 1 %>'">⟫</button>
+                                <% } %>
+
         </div>
-
-    </div>
-    </div>
     </div>
     </div>
 </body>
