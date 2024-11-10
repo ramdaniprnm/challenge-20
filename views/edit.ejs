@@ -35,9 +35,11 @@
                     <div class="form-group">
                         <label for="married">Is Married</label>
                         <div class="form-check">
-                            <input type="radio" name="married" id="married-yes" value="true">
+                            <input type="radio" name="married" id="married-yes" value="1" <%=item.married===1
+                                ? 'checked' : '' %>>
                             <label for="married-yes">Yes</label>
-                            <input type="radio" name="married" id="married-no" value="false">
+                            <input type="radio" name="married" id="married-no" value="0" <%=item.married===0 ? 'checked'
+                                : '' %>>
                             <label for="married-no">Not Yet</label>
                         </div>
                     </div>

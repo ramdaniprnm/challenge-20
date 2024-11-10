@@ -14,7 +14,7 @@ const db = new sqlite3.Database('./user.db', (err) => {
 /* GET home page. */
 router.get('/', (req, res, next) => {
   const limit = 5;
-  const { page = 1, name, height, weight, birthDateStart, birthDateEnd, married } = req.query;
+  const { page = 1, name, height, weight, birthDateStart, birthDateEnd, married, operation } = req.query;
   const offset = (page - 1) * limit;
   const query = [];
   const params = [];
@@ -46,8 +46,7 @@ router.get('/', (req, res, next) => {
     params.push(married);
   }
 
-  const whereClause = query.length ? `WHERE ${query.join(' AND ')}` : '';
-
+  const whereClause = query.length ? `WHERE ${query.join(` ${operation} `)}` : '';
   db.get(`SELECT COUNT(*) AS count FROM data ${whereClause}`, params, (err, result) => {
     if (err) {
       console.error(err);
@@ -57,7 +56,7 @@ router.get('/', (req, res, next) => {
     const totalRows = parseInt(result.count, 10);
     const totalPages = Math.ceil(totalRows / limit);
 
-    db.all(`SELECT * FROM data ${whereClause} LIMIT ? OFFSET ?`, [...params, limit, offset], (err, rows) => {
+    db.all(`SELECT * FROM data ${whereClause} ORDER BY id ASC LIMIT ? OFFSET ?`, [...params, limit, offset], (err, rows) => {
       if (err) {
         console.error(err);
         return next(err);
@@ -68,12 +67,18 @@ router.get('/', (req, res, next) => {
         title: 'SQLite BREAD (Browse, Read, Edit, Add, Delete) and Pagination',
         page: parseInt(page, 10),
         totalPages,
-        offset
+        offset,
+        name: req.query.name,
+        married: req.query.married,
+        height: req.query.height,
+        weight: req.query.weight,
+        birthDateStart: req.query.birthDateStart,
+        birthDateEnd: req.query.birthDateEnd,
+        operation: req.query.operation
       });
     });
   });
-});
-
+})
 
 router.get('/add', (req, res, next) => {
   res.render('add', { title: 'Adding Data' });
@@ -81,10 +86,10 @@ router.get('/add', (req, res, next) => {
 
 router.post('/add', (req, res, next) => {
   const { name, height, weight, birthdate, married } = req.body;
-  const marriedValue = married === 'true' ? 1 : 0;
+  const marriedValue = married === '1' ? 1 : 0;
 
-  if (!name || !height || !weight || !birthdate) {
-    return res.status(400).send("semua data telah ada");
+  if (!name || !height || !weight || !birthdate || married === undefined) {
+    return res.status(400).send("All fields are required");
   }
 
   const query = `INSERT INTO data (name, height, weight, birthdate, married) VALUES (?, ?, ?, ?, ?)`;

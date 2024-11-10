@@ -18,36 +18,42 @@
                 <form action="/" method="get" class="search-form">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" name="name" id="name" placeholder="Search Name">
+                        <input type="text" name="name" id="name" placeholder="Search Name" value="<%= name || '' %>">
                     </div>
                     <div class="form-group">
                         <label for="height">Height</label>
-                        <input type="number" name="height" id="height" placeholder="Search Height">
+                        <input type="number" name="height" id="height" placeholder="Search Height"
+                            value="<%= height || '' %>">
                     </div>
                     <div class="form-group">
                         <label for="weight">Weight</label>
-                        <input type="number" step="0.01" min="0" name="weight" id="weight"
+                        <input type="number" step="0.01" min="0" name="weight" id="weight" value="<%= weight || '' %>"
                             placeholder="Insert Your Weight">
                     </div>
                     <div class="form-group">
                         <label for="birthDateStart">Birth Date</label>
-                        <input type="date" name="birthDateStart" id="birthDateStart">
+                        <input type="date" name="birthDateStart" id="birthDateStart" min="1900-01-01" max="2024-12-31"
+                            value="<%= birthDateStart || '' %>">
                         <span>s.d.</span>
-                        <input type="date" name="birthDateEnd" id="birthDateEnd">
+                        <input type="date" name="birthDateEnd" id="birthDateEnd" min="1900-01-01" max="2024-12-31"
+                            value="<%= birthDateEnd || '' %>">
                     </div>
                     <div class="form-group">
-                        <label for="isMarried">Is Married</label>
-                        <select name="isMarried" id="isMarried">
-                            <option value="" disabled selected>-select married-</option>
-                            <option value="true">Yes</option>
-                            <option value="false">Not Yet</option>
+                        <label for="married">Is Married</label>
+                        <select name="married" id="married">
+                            <option value="" <%=!married ? 'selected' : '' %>>-select married-</option>
+                            <option value="1" <%=married==="1" ? 'selected' : '' %>>Yes</option>
+                            <option value="0" <%=married==="0" ? 'selected' : '' %>>Not Yet</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Operation</label>
                         <div class="form-check">
-                            <input type="radio" name="operation" value="OR" checked> OR
-                            <input type="radio" name="operation" value="AND"> AND
+                            <input type="radio" name="operation" value="OR" <%=operation=="OR" ? 'checked' : 'checked'
+                                %>>
+                            OR
+                            <input type="radio" name="operation" value="AND" <%=operation=="AND" ? 'checked' : '' %>>
+                            AND
                         </div>
                     </div>
                     <div class="form-group">
@@ -56,78 +62,100 @@
                     </div>
                 </form>
             </div>
-        </div>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>NO.</th>
-                        <th>Name</th>
-                        <th>Height</th>
-                        <th>Weight</th>
-                        <th>Birth Date</th>
-                        <th>Is Married</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% data.forEach((person, index)=> { %>
+            <div class="table-container">
+                <table>
+                    <thead>
                         <tr>
-                            <th>
-                                <%= index + offset + 1 %>
-                            </th>
-                            <td>
-                                <%= person.name %>
-                            </td>
-                            <td>
-                                <%= person.height %>
-                            </td>
-                            <td>
-                                <%= person.weight %>
-                            </td>
-                            <td>
-                                <%= person.birthdate %>
-                            </td>
-                            <td>
-                                <%= person.married ? "Yes" : "Not Yet" %>
-                            </td>
-                            <td>
-                                <a href="/edit/<%= person.id %>" style="text-decoration:none"
-                                    class="update-button">Update</a>
-                                <a href="javascript:void(0);" style="text-decoration:none" class="delete-button"
-                                    onclick="if(confirm('Apakah kamu yakin ingin menghapus data ini?')) { window.location.href='/delete/<%= person.id %>'; }">Delete</a>
-                            </td>
+                            <th>NO.</th>
+                            <th>Name</th>
+                            <th>Height</th>
+                            <th>Weight</th>
+                            <th>Birth Date</th>
+                            <th>Is Married</th>
+                            <th>Actions</th>
                         </tr>
-                        <% }) %>
-                </tbody>
-            </table>
-        </div>
-        <div class="pagination">
-            <div class="container">
-                <a href="/add">Add</a>
+                    </thead>
+                    <tbody>
+                        <% data.forEach((person, index)=> { %>
+                            <tr>
+                                <th>
+                                    <%= index + offset + 1 %>
+                                </th>
+                                <td>
+                                    <%= person.name %>
+                                </td>
+                                <td>
+                                    <%= person.height %>
+                                </td>
+                                <td>
+                                    <%= person.weight %>
+                                </td>
+                                <td>
+                                    <%= person.birthdate %>
+                                </td>
+                                <td>
+                                    <%= person.married ? "Yes" : "Not Yet" %>
+                                </td>
+                                <td>
+                                    <a href="/edit/<%= person.id %>" style="text-decoration:none"
+                                        class="update-button">Update</a>
+                                    <a href="javascript:void(0);" onclick="openModal('<%= person.id %>')"
+                                        class="delete-button">Delete</a>
+                                    <div id="delete<%= person.id %>" class="modal">
+                                        <div class="modal-content">
+                                            <p>Apakah kamu yakin ingin menghapus data ini?</p>
+                                            <div class="button-group">
+                                                <div class="button-group">
+                                                    <a href="javascript:void(0);" class="cancel-button"
+                                                        onclick="closeModal('<%= person.id %>');">Cancel</a>
+                                                    <a href="/delete/<%= person.id %>" class="delete-button">Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
             </div>
-
-            <% if (page> 1) { %>
-                <button class="page-button" style="text-decoration:none"
-                    onclick="window.location.href='/?page=<%= page - 1%>'">⟪</button>
-                <% } %>
-
-                    <% for (let i=1; i <=totalPages; i++) { %>
-                        <button class="page-button <%=page===i ? 'active' : '' %>">
-                            <a href="/?page=<%= i %>" style="text-decoration:none; color: white;">
-                                <%= i %>
-                            </a>
-                        </button>
+            <div class="card-footer card-footer-flex">
+                <div>
+                    <a href="/add" class="add-button">Add</a>
+                </div>
+                <div class="pagination">
+                    <% if (page> 1) { %>
+                        <button class="page-button" style="text-decoration:none"
+                            onclick="window.location.href='/?page=<%= page - 1 %>'">⟪</button>
                         <% } %>
-
-                            <% if (page < totalPages) { %>
-                                <button class="page-button" style="text-decoration:none"
-                                    onclick="window.location.href='/?page=<%= page + 1 %>'">⟫</button>
+                            <% for (let i=1; i <=totalPages; i++) { %>
+                                <button class="page-button <%= page === i ? 'active' : '' %>">
+                                    <a href="/?page=<%= i %>" style="text-decoration:none; color: white;">
+                                        <%= i %>
+                                    </a>
+                                </button>
                                 <% } %>
-
+                                    <% if (page < totalPages) { %>
+                                        <button class="page-button" style="text-decoration:none"
+                                            onclick="window.location.href='/?page=<%= page + 1 %>'">⟫</button>
+                                        <% } %>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
+    <script>
+        const openModal = (itemId) => {
+            document.getElementById('delete' + itemId).style.display = 'block';
+        }
+        const closeModal = (itemId) => {
+            document.getElementById('delete' + itemId).style.display = 'none';
+        }
+        window.onclick = function (event) {
+            if (event.target.className === 'modal') {
+                closeModal(event.target.id.replace('delete', ''));
+            }
+        }
+    </script>
 </body>
 
 </html>
