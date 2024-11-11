@@ -99,16 +99,19 @@
                                 <td>
                                     <a href="/edit/<%= person.id %>" style="text-decoration:none"
                                         class="update-button">Update</a>
-                                    <a href="javascript:void(0);" onclick="openModal('<%= person.id %>')"
-                                        class="delete-button">Delete</a>
+                                    <a href="javascript:void(0);" class="delete-button"
+                                        onclick="openModal('<%= person.id %>')">Delete</a>
                                     <div id="delete<%= person.id %>" class="modal">
                                         <div class="modal-content">
-                                            <p>Apakah kamu yakin ingin menghapus data ini?</p>
+                                            <span class="modal-close" onclick="closeModal('<%= person.id %>')"></span>
+                                            <h2>Delete Confirmation</h2>
+                                            <p>Apakah kamu yakin ingin menghapus data ini? '<%= person.name %>'</p>
                                             <div class="button-group">
                                                 <div class="button-group">
                                                     <a href="javascript:void(0);" class="cancel-button"
-                                                        onclick="closeModal('<%= person.id %>');">Cancel</a>
-                                                    <a href="/delete/<%= person.id %>" class="delete-button">Delete</a>
+                                                        onclick="closeModal('<%= person.id %>');">No</a>
+                                                    <a href="/delete/<%= person.id %>" style="text-decoration:none;"
+                                                        class=" delete2-button">Yes</a>
                                                 </div>
                                             </div>
                                         </div>
